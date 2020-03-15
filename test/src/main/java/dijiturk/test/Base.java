@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -92,12 +91,11 @@ public class Base {
 		
 		Properties prop = new Properties();
 		FileInputStream fs =  new FileInputStream("C:\\Users\\MK\\git\\dijiturkTest\\test\\src\\main\\java\\resources\\data.properties");
-		System.out.println(fs);
 		prop.load(fs);
 		String browserName = prop.getProperty("browser");
 		
 		if(browserName.equalsIgnoreCase("chrome")) {
-			System.setProperty("webdriver.chrome.driver", "C:\\Users\\MK\\git\\dijiturkTest\\test\\driver\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", ".\\driver\\chromedriver.exe");
 			driver = new ChromeDriver();
 		}
 
@@ -117,7 +115,6 @@ public class Base {
 		
 		ignoreEmailVerification(driver);
 
-		
 		//test here
 		waitForUrlChange();
 		String totalCharge = driver.findElement(By.xpath("//*[@id=\"ncol_ref\"]/tbody/tr[2]/td[2]/small")).getText();
