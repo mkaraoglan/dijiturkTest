@@ -123,8 +123,10 @@ public class Base {
 		String totalCharge = driver.findElement(By.xpath("//*[@id=\"ncol_ref\"]/tbody/tr[2]/td[2]/small")).getText();
 		System.out.println(totalCharge);
 		String cardNumber = prop.getProperty("cardNumber");
+		
 		makePayment(driver, firstName, cardNumber);
 		
+		//test2 here
 		String result = driver.findElement(By.cssSelector("#content > div > table:nth-child(6) > tbody > tr > td > h3")).getText();
 		System.out.println(result);
 	}
