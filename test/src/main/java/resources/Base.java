@@ -81,7 +81,8 @@ public class Base {
 		System.out.print(totalCharge);
 		driver.findElement(By.id("Ecom_Payment_Card_Name")).sendKeys(firstName);
 		
-		driver.findElement(By.id("Ecom_Payment_Card_Number")).sendKeys("4111111111111111");
+		String cardNumber = prop.getProperty("cardNumber");
+		driver.findElement(By.id("Ecom_Payment_Card_Number")).sendKeys(cardNumber);
 		
 		driver.findElement(By.id("Ecom_Payment_Card_ExpDate_Month")).click();
 		driver.findElement(By.xpath("//*[@id=\"Ecom_Payment_Card_ExpDate_Month\"]/option[5]")).click();
