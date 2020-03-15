@@ -32,6 +32,7 @@ public class Base {
 			driver = new ChromeDriver();
 		}
 
+		driver.manage().window().maximize();
 		driver.get("https://connect-th.beinsports.com/en");
 		waitForLoading();
 
