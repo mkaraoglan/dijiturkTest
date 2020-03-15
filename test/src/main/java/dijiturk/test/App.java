@@ -2,8 +2,6 @@ package dijiturk.test;
 
 import java.io.IOException;
 
-import resources.Base;
-
 /**
  * Hello world!
  *
