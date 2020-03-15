@@ -11,7 +11,7 @@ public class App
     public static void main( String[] args ) throws IOException
     {
     	System.out.println( "s World!" );
-    	Base base = new Base();
+    	Dijiturk base = new Dijiturk();
     	base.initializeDriver();
     }
 }

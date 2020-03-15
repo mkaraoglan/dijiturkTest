@@ -10,15 +10,15 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class Base {
+public class Dijiturk {
 	public WebDriver driver;
 	public WebDriverWait wait;
 	
-	private void connectURL(WebDriver driver, String URL) {
+	public void connectURL(WebDriver driver, String URL) {
 		driver.get(URL);
 	}
 	
-	private void subscribe (WebDriver driver) {
+	public void subscribe (WebDriver driver) {
 		waitForLoading();
 
 		int currentWindowWidth = driver.manage().window().getSize().getWidth();
@@ -34,7 +34,7 @@ public class Base {
 
 	}
 	
-	private void register(WebDriver driver) {
+	public void register(WebDriver driver) {
 		waitForLoading();
 		
 		driver.findElement(By.cssSelector("body > div.layout-wide > div.container-onboarding.step1 > div:nth-child(4)")).click();
@@ -43,7 +43,7 @@ public class Base {
 		
 	}
 	
-	private void createAccaunt(WebDriver driver, String firstName, String lastName, String emailOrPhone, String password) {
+	public void createAccaunt(WebDriver driver, String firstName, String lastName, String emailOrPhone, String password) {
 		
 		waitForUrlChange();
 		waitForLoading();
@@ -55,7 +55,7 @@ public class Base {
 		formRegister.findElement(By.cssSelector("input[type='submit']")).click();
 	}
 	
-	private void ignoreEmailVerification(WebDriver driver) {
+	public void ignoreEmailVerification(WebDriver driver) {
 		waitForUrlChange();
 		waitForLoading();
 		
@@ -67,7 +67,7 @@ public class Base {
 		
 	}
 	
-	private void makePayment(WebDriver driver, String firstName, String cardNumber) {
+	public void makePayment(WebDriver driver, String firstName, String cardNumber) {
 
 		driver.findElement(By.id("Ecom_Payment_Card_Name")).sendKeys(firstName);
 		
@@ -85,7 +85,7 @@ public class Base {
 
 	}
 	//initialize driver
-	public void initializeDriver() throws IOException {
+	public void initializeDriver() {
 		
 		String browserName = DijiProperties.Browser;
 		
@@ -95,7 +95,7 @@ public class Base {
 		}
 
 		driver.manage().window().maximize();
-		
+		/*
 		connectURL(driver, DijiProperties.Url);
 		
 		subscribe(driver);
@@ -120,7 +120,7 @@ public class Base {
 		
 		//test2 here
 		String result = driver.findElement(By.cssSelector("#content > div > table:nth-child(6) > tbody > tr > td > h3")).getText();
-		System.out.println(result);
+		System.out.println(result);*/
 	}
 
 	
