@@ -1,8 +1,6 @@
 package dijiturk.test;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -89,10 +87,7 @@ public class Base {
 	//initialize driver
 	public void initializeDriver() throws IOException {
 		
-		Properties prop = new Properties();
-		FileInputStream fs =  new FileInputStream("C:\\Users\\MK\\git\\dijiturkTest\\test\\src\\main\\java\\resources\\data.properties");
-		prop.load(fs);
-		String browserName = prop.getProperty("browser");
+		String browserName = DijiProperties.Browser;
 		
 		if(browserName.equalsIgnoreCase("chrome")) {
 			System.setProperty("webdriver.chrome.driver", ".\\driver\\chromedriver.exe");
@@ -101,16 +96,16 @@ public class Base {
 
 		driver.manage().window().maximize();
 		
-		connectURL(driver, prop.getProperty("url"));
+		connectURL(driver, DijiProperties.Url);
 		
 		subscribe(driver);
 		
 		register(driver);
 
-		String firstName = prop.getProperty("firstName");
-		String lastName = prop.getProperty("lastName");
-		String emailOrPhone = prop.getProperty("emailOrPhone");
-		String password = prop.getProperty("password");
+		String firstName = DijiProperties.firstName;
+		String lastName = DijiProperties.lastName;
+		String emailOrPhone = DijiProperties.emailOrPhone;
+		String password = DijiProperties.password;
 		createAccaunt(driver, firstName, lastName, emailOrPhone, password);
 		
 		ignoreEmailVerification(driver);
@@ -119,7 +114,7 @@ public class Base {
 		waitForUrlChange();
 		String totalCharge = driver.findElement(By.xpath("//*[@id=\"ncol_ref\"]/tbody/tr[2]/td[2]/small")).getText();
 		System.out.println(totalCharge);
-		String cardNumber = prop.getProperty("cardNumber");
+		String cardNumber = DijiProperties.cardNumber;
 		
 		makePayment(driver, firstName, cardNumber);
 		
