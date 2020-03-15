@@ -14,12 +14,17 @@ public class Dijiturk {
 	public WebDriver driver;
 	public WebDriverWait wait;
 	
+	public Dijiturk(WebDriver driver) {
+		this.driver = driver;
+	}
+	
+
 	public void connectURL(WebDriver driver, String URL) {
 		driver.get(URL);
 	}
 	
 	public void subscribe (WebDriver driver) {
-		waitForLoading();
+		waitForLoading(driver);
 
 		int currentWindowWidth = driver.manage().window().getSize().getWidth();
 		
@@ -35,7 +40,7 @@ public class Dijiturk {
 	}
 	
 	public void register(WebDriver driver) {
-		waitForLoading();
+		waitForLoading(driver);
 		
 		driver.findElement(By.cssSelector("body > div.layout-wide > div.container-onboarding.step1 > div:nth-child(4)")).click();
 
@@ -45,8 +50,8 @@ public class Dijiturk {
 	
 	public void createAccaunt(WebDriver driver, String firstName, String lastName, String emailOrPhone, String password) {
 		
-		waitForUrlChange();
-		waitForLoading();
+		waitForUrlChange(driver);
+		waitForLoading(driver);
 		WebElement formRegister = driver.findElement(By.cssSelector("#form-register"));
 		formRegister.findElement(By.cssSelector("input[name='FirstName']")).sendKeys(firstName);
 		formRegister.findElement(By.cssSelector("input[name='LastName']")).sendKeys(lastName);
@@ -56,8 +61,8 @@ public class Dijiturk {
 	}
 	
 	public void ignoreEmailVerification(WebDriver driver) {
-		waitForUrlChange();
-		waitForLoading();
+		waitForUrlChange(driver);
+		waitForLoading(driver);
 		
 		driver.findElement(By.id("close")).click();
 
@@ -86,15 +91,11 @@ public class Dijiturk {
 	}
 	//initialize driver
 	public void initializeDriver() {
-		
-		String browserName = DijiProperties.Browser;
-		
-		if(browserName.equalsIgnoreCase("chrome")) {
-			System.setProperty("webdriver.chrome.driver", ".\\driver\\chromedriver.exe");
-			driver = new ChromeDriver();
-		}
+		/*
+		System.setProperty("webdriver.chrome.driver", ".\\driver\\chromedriver.exe");
+		driver = new ChromeDriver();
 
-		driver.manage().window().maximize();
+		driver.manage().window().maximize();*/
 		/*
 		connectURL(driver, DijiProperties.Url);
 		
@@ -124,12 +125,12 @@ public class Dijiturk {
 	}
 
 	
-	public void waitForLoading() {
+	public void waitForLoading(WebDriver driver) {
 		wait = new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.attributeToBe(By.id("loading"), "style", "display: none;"));
 	}
 	
-	public void waitForUrlChange() {
+	public void waitForUrlChange(WebDriver driver) {
 		wait.until(ExpectedConditions.not(ExpectedConditions.urlToBe(driver.getCurrentUrl())));
 	}
     
