@@ -10,9 +10,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-/**
- * Unit test for simple App.
- */
 public class DijiturkTest 
 {
 
@@ -49,7 +46,6 @@ public class DijiturkTest
     @Test
     public void shouldAnswerWithTrue()
     {
-    	objDijiturk.initializeDriver();
     	objDijiturk.connectURL(driver, DijiProperties.Url);
     	objDijiturk.subscribe(driver);
     	objDijiturk.register(driver);

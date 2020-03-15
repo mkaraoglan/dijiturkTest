@@ -1,12 +1,10 @@
 package dijiturk.test;
 
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -89,41 +87,6 @@ public class Dijiturk {
 		driver.findElement(By.id("submit3")).click();
 
 	}
-	//initialize driver
-	public void initializeDriver() {
-		/*
-		System.setProperty("webdriver.chrome.driver", ".\\driver\\chromedriver.exe");
-		driver = new ChromeDriver();
-
-		driver.manage().window().maximize();*/
-		/*
-		connectURL(driver, DijiProperties.Url);
-		
-		subscribe(driver);
-		
-		register(driver);
-
-		String firstName = DijiProperties.firstName;
-		String lastName = DijiProperties.lastName;
-		String emailOrPhone = DijiProperties.emailOrPhone;
-		String password = DijiProperties.password;
-		createAccaunt(driver, firstName, lastName, emailOrPhone, password);
-		
-		ignoreEmailVerification(driver);
-
-		//test here
-		waitForUrlChange();
-		String totalCharge = driver.findElement(By.xpath("//*[@id=\"ncol_ref\"]/tbody/tr[2]/td[2]/small")).getText();
-		System.out.println(totalCharge);
-		String cardNumber = DijiProperties.cardNumber;
-		
-		makePayment(driver, firstName, cardNumber);
-		
-		//test2 here
-		String result = driver.findElement(By.cssSelector("#content > div > table:nth-child(6) > tbody > tr > td > h3")).getText();
-		System.out.println(result);*/
-	}
-
 	
 	public void waitForLoading(WebDriver driver) {
 		wait = new WebDriverWait(driver, 10);
