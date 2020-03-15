@@ -90,7 +90,7 @@ public class Base {
 	public void initializeDriver() throws IOException {
 		
 		Properties prop = new Properties();
-		FileInputStream fs =  new FileInputStream("C:\\Users\\MK\\git\\dijiturkTest\\test\\src\\main\\java\\resources\\data.properties");
+		FileInputStream fs =  new FileInputStream("${basedir}\\test\\src\\main\\java\\resources\\data.properties");
 		prop.load(fs);
 		String browserName = prop.getProperty("browser");
 		
